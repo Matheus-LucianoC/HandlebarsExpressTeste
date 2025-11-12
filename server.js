@@ -6,6 +6,9 @@ const port = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
+const path = require('path');
+app.set('views', path.join(__dirname, 'views')); 
+
 app.engine('handlebars', exphbs.engine({ defaultLayout: false}));
 app.set('view engine', 'handlebars');
 
@@ -70,4 +73,5 @@ app.post('/pessoas/excluir/:id', (req,res) =>{
 app.listen(port, () => {
     console.log(`Servidor em execução: http://localhost:${port}`);
 });
+
 
